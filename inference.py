@@ -4,7 +4,7 @@ import torch
 import commons
 import utils
 from models import SynthesizerTrn
-from text.symbols import symbols
+from text.mix.symbol import symbol_chinese
 from text import text_to_sequence
 
 from scipy.io.wavfile import write
@@ -33,7 +33,7 @@ else:
     hps.data.use_mel_posterior_encoder = False
 
 net_g = SynthesizerTrn(
-    len(symbols),
+    len(symbol_chinese),
     posterior_channels,
     hps.train.segment_size // hps.data.hop_length,
     **hps.model).cuda()

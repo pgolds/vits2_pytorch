@@ -35,7 +35,7 @@ from losses import (
   kl_loss
 )
 from mel_processing import mel_spectrogram_torch, spec_to_mel_torch
-from text.symbols import symbols
+from text.mix.symbol import symbol_chinese
 
 
 torch.backends.cudnn.benchmark = True
@@ -141,7 +141,7 @@ def run(rank, n_gpus, hps):
     use_duration_discriminator = False
   
   net_g = SynthesizerTrn(
-      len(symbols),
+      len(symbol_chinese),
       posterior_channels,
       hps.train.segment_size // hps.data.hop_length,
       mas_noise_scale_initial = mas_noise_scale_initial,
